@@ -1,0 +1,16 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Force HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect root to public/index.php
+RewriteRule ^$ public/index.php [L]
+
+# Redirect all other requests to public folder
+RewriteRule (.*) public/$1 [L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
